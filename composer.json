@@ -1,0 +1,31 @@
+{
+    "name": "kodeops/rro",
+    "type": "library",
+    "version": "1.0",
+    "description": "Rich response object plugin.",
+    "keywords": ["kodeops", "plugin", "laravel", "utils"],
+    "homepage": "https://github.com/kodeops/rro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Xavier Hernández",
+            "email": "xavier.hernandez@kodeops.io",
+            "homepage": "https://kodeops.io"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "illuminate/support": "^5.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "kodeops\\rro\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0"
+        }
+    },
+    "minimum-stability": "stable"
+}
