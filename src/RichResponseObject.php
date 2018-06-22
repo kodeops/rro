@@ -55,12 +55,14 @@ class RichResponseObject
     // ALIAS
     public function type($type)
     {
-        return $this->setResponseType($type);
+        $this->type = $type;
+        return $this->setResponseType($this->type);
     }
 
     private function setResponseMessage($message)
     {
-        $this->response[$this->getKey()]['message'] = $message;
+        $this->message = $message;
+        $this->response[$this->getKey()]['message'] = $this->message;
 
         return $this;
     }
@@ -140,7 +142,7 @@ class RichResponseObject
 
     public function build()
     {
-        if (is_null($this->getStatusCode())) {
+        if (!($this->getStatusCode())) {
             $this->setStatusCode($this->isSuccess() ? 200 : 400);
         }
 
