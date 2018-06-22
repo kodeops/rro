@@ -1,8 +1,6 @@
 <?php
 namespace kodeops;
 
-use Illuminate\Foundation\Application;
-
 class RichResponseObject
 {
     const SUCCESS_TYPE = 'response';
@@ -145,10 +143,8 @@ class RichResponseObject
         if (is_null($this->getStatusCode())) {
             $this->setStatusCode($this->isSuccess() ? 200 : 400);
         }
-        //event(new \Besty\Events\Besponse\Error($this->response);
 
-        // Add query listener: To enable this data, you must uncomment query listener in start.php
-        if (App::environment('local')) {
+        if (env('APP_DEBUG', false)) {
             $this->response['debug_backtrace'] = debug_backtrace()[1];
         }
 
