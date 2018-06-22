@@ -12,7 +12,7 @@
 
 Add composer package:
 
-`$ composer require kodeops/rro:dev-master
+`$ composer require kodeops/rro:dev-master`
 
 Add helpers:
 
@@ -38,7 +38,14 @@ if (!function_exists('error')) {
 }
 
 ```
- 
+
+Add `helpers.php` to `composer.json` autoload section:
+
+```
+"files": [
+    "Rayotable/helpers.php"
+],
+``` 
 ##  Methods
 
 ### `type(string $string)`
