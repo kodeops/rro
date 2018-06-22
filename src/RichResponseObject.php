@@ -1,5 +1,5 @@
 <?php
-namespace kodeops;
+namespace kodeops\rro;
 
 class RichResponseObject
 {
