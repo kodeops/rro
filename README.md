@@ -43,21 +43,35 @@ Add `helpers.php` to `composer.json` autoload section:
 
 ```
 "files": [
-    "Rayotable/helpers.php"
+    "<your-app-folder>/helpers.php"
 ],
 ``` 
 ##  Methods
 
 ### `type(string $string)`
 
+Set the type for the response.
+
 ### `message(string $string)`
+
+Set the message for the response.
 
 ### `data(array $data)`
 
+Set the data for the response.
+
 ### `code(int $code)`
+
+Set the status code for the response.
 
 ### `toResponse()`
 
+Render response in Laravel way.
+
 ### `isError()`
 
+Wether the response is an error.
+
 ### `isSuccess()`
+
+Wether the response is a success.
