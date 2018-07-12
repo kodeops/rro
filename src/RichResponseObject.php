@@ -69,7 +69,7 @@ class RichResponseObject
 
     public function getResponseMessage()
     {
-        return $this->response_message;
+        return $this->message;
     }
 
     // ALIAS
