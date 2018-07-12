@@ -68,6 +68,20 @@ Set the status code for the response.
 
 Render response in Laravel way.
 
+### `getResponseMessage()`
+
+Get the response message.
+
+### `getResponseType()`
+
+Get the response type.
+
+### `getData($dot)`
+
+Get the response data array (support dot syntax to retrieve specific key). 
+
+Example: `getData('user.id')`
+
 ### `isError()`
 
 Wether the response is an error.
