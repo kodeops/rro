@@ -1,7 +1,7 @@
 {
     "name": "kodeops/rro",
     "type": "library",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Rich response object plugin.",
     "keywords": ["kodeops", "plugin", "laravel", "utils"],
     "homepage": "https://github.com/kodeops/rro",
