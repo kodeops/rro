@@ -37,6 +37,31 @@ if (!function_exists('error')) {
     }
 }
 
+if (!function_exists('rro')) {
+    function rro($response) {
+        if (isset($response->response)) {
+            $isSuccess = true;
+            $message = $response->response->message;
+            $type = $response->response->type;
+            $data = isset($response->response->data) ? $response->response->data : null;
+            $status_code = isset($response->status_code) ? $response->status_code : 200;
+        } else {
+            $isSuccess = false;
+            $message = $response->error->message;
+            $type = $response->error->type;
+            $data = isset($response->error->data) ? $response->error->data : null;
+            $status_code = isset($response->status_code) ? $response->status_code : 400;
+        }
+        return (new \kodeops\rro\RichResponseObject(
+            $isSuccess, 
+            $message, 
+            $type, 
+            $data,
+            $status_code
+        ))->build();
+    }
+}
+
 ```
 
 Add `helpers.php` to `composer.json` autoload section:
