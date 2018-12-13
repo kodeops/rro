@@ -146,6 +146,10 @@ class RichResponseObject
             $this->setStatusCode($this->isSuccess() ? 200 : 400);
         }
 
+        if ($this->getResponseType() == '' AND $this->getResponseMessage() != '') {
+            $this->setResponseType($this->getResponseMessage());
+        }
+
         if (env('APP_DEBUG', false)) {
             $this->response['debug_backtrace'] = debug_backtrace()[1];
         }
