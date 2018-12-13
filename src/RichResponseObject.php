@@ -167,4 +167,10 @@ class RichResponseObject
     {
         return response()->json($this->getResponse(), $this->getStatusCode());
     }
+
+    // ALIAS
+    public function __toString()
+    {
+        return $this->toResponse();
+    }
 }
