@@ -175,6 +175,6 @@ class RichResponseObject
     // ALIAS
     public function __toString()
     {
-        return $this->toResponse();
+        return json_encode($this->toResponse());
     }
 }
