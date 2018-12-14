@@ -41,15 +41,16 @@ class RichResponseObject
 
     public function setResponseType($type)
     {
-        $type = is_null($type) ? str_slug($this->getResponseMessage(), self::SLUG_DELIMITER) : $type;
-        $this->response[$this->getKey()]['type'] = $type;
+        $this->type = is_null($type) ? $this->getResponseMessage() : $type;
+        $this->type = str_slug($this->type, self::SLUG_DELIMITER);
+        $this->response[$this->getKey()]['type'] = $this->type;
 
         return $this;
     }
 
     public function getResponseType()
     {
-        return $this->response_type;
+        return $this->type;
     }
 
     // ALIAS
@@ -63,6 +64,10 @@ class RichResponseObject
     {
         $this->message = $message;
         $this->response[$this->getKey()]['message'] = $this->message;
+
+        if ($this->getResponseType() == '') {
+            $this->setResponseType($this->message);
+        }
 
         return $this;
     }
