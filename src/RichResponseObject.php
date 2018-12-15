@@ -133,6 +133,12 @@ class RichResponseObject
         return $this->data;
     }
 
+    public function addData($new_data)
+    {
+        $this->setResponseData(array_merge($this->data, $new_data));
+        return $this;
+    }
+
     public function setResponse($response)
     {
         $this->response = $response;

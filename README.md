@@ -107,6 +107,10 @@ Get the response data array (support dot syntax to retrieve specific key).
 
 Example: `getData('user.id')`
 
+### `addData(array $data)`
+
+Add more items to the data array (will be automatically merged to existing data).
+
 ### `isError()`
 
 Wether the response is an error.
