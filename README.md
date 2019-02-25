@@ -118,3 +118,11 @@ Wether the response is an error.
 ### `isSuccess()`
 
 Wether the response is a success.
+
+### `isResponseType('type')`
+
+Wether the response type equals to the parameter sent.
+
+### `isResponseMessage('message')`
+
+Wether the response message equals to the parameter sent.

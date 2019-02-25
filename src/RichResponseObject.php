@@ -176,7 +176,17 @@ class RichResponseObject
     public function isError()
     {
         return !$this->isSuccess;
-    }    
+    }
+
+    public function isResponseType($type)
+    {
+        return $type == $this->type;
+    }
+
+    public function isResponseMessage($message)
+    {
+        return $message == $this->message;
+    }
 
     public function toResponse()
     {
