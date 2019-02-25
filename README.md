@@ -103,7 +103,7 @@ Get the response type.
 
 ### `getData($dot)`
 
-Get the response data array (support dot syntax to retrieve specific key). 
+Get the response data array (uses dot syntax to retrieve specific key). 
 
 Example: `getData('user.id')`
 
