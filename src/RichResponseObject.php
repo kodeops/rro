@@ -1,6 +1,9 @@
 <?php
 namespace kodeops\rro;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
+
 class RichResponseObject
 {
     const SUCCESS_TYPE = 'response';
@@ -42,7 +45,7 @@ class RichResponseObject
     public function setResponseType($type)
     {
         $this->type = is_null($type) ? $this->getResponseMessage() : $type;
-        $this->type = str_slug($this->type, self::SLUG_DELIMITER);
+        $this->type = Str::slug($this->type, self::SLUG_DELIMITER);
         $this->response[$this->getKey()]['type'] = $this->type;
 
         return $this;
@@ -127,7 +130,7 @@ class RichResponseObject
     public function getData($dot = false)
     {
         if ($dot) {
-            return array_get($this->getData(), $dot);
+            return Arr::get($this->getData(), $dot);
         }
 
         return $this->data;
