@@ -75,6 +75,9 @@ Add `helpers.php` to `composer.json` autoload section:
 ``` 
 ##  Methods
 
+### Building response
+***	
+
 ### `type(string $string)`
 
 Set the type for the response.
@@ -91,9 +94,8 @@ Set the data for the response.
 
 Set the status code for the response.
 
-### `toResponse()`
-
-Render response in Laravel way.
+### Accessing response
+***	
 
 ### `getResponseMessage()`
 
@@ -128,3 +130,10 @@ Wether the response type equals to the parameter sent.
 ### `isResponseMessage('message')`
 
 Wether the response message equals to the parameter sent.
+
+### Render for Laravel response
+***	
+
+### `toResponse()`
+
+Render response in Laravel way.
