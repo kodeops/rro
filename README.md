@@ -75,7 +75,6 @@ Add `helpers.php` to `composer.json` autoload section:
 ``` 
 ##  Methods
 
-<br>
 ### Building response
 ***	
 
@@ -95,7 +94,6 @@ Set the data for the response.
 
 Set the status code for the response.
 
-<br>
 ### Accessing response
 ***	
 
@@ -133,7 +131,6 @@ Wether the response type equals to the parameter sent.
 
 Wether the response message equals to the parameter sent.
 
-<br>
 ### Render for Laravel response
 ***	
 
