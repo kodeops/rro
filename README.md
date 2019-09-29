@@ -17,12 +17,14 @@ Add composer package:
 Add helpers:
 
 ```
+use Illuminate\Support\Str;
+
 if (!function_exists('success')) {
     function success($response_message = null) {
         return (new \kodeops\rro\RichResponseObject(
             true, 
             $response_message, 
-            str_slug($response_message, '_')
+            Str::slug($response_message, '_')
         ))->build();
     }
 }
@@ -32,7 +34,7 @@ if (!function_exists('error')) {
         return (new \kodeops\rro\RichResponseObject(
             false, 
             $response_message, 
-            str_slug($response_message, '_')
+            Str::slug($response_message, '_')
         ))->build();
     }
 }
