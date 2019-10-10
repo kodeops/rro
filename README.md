@@ -79,37 +79,40 @@ Assuming helper functions are loaded in `composer.json`:
 
 ```
 $rro = error()
-		      ->type('error_type')
-		      ->message('This is a sample rich response object.')
-		      ->code(404)
-		      ->data(['foo' => 'bar']);
+  ->type('error_type')
+  ->message('This is a sample rich response object.')
+  ->code(404)
+  ->data(['foo' => 'bar']);
 ```
 
 Checking status:
 
 ```
 if ($rro->isError()) {
-	// Response contains an error payload
+  // Response contains an error payload
 }
 
 if ($rro->isSuccess()) {
-	// Response contains a success payload
+  // Response contains a success payload
 }
 
 if ($rro->response('is_type', 'error_type')) {
-	// returns true if given type matches response type
+  // returns true if given type matches response type
 }
 
 if ($rro->response('is_message', 'Descriptive error message')) {
-	// returns true if given message matches response message
+  // returns true if given message matches response message
 }
 ```
 
 Accessing response:
 
 ```
+$type = $rro->response('type');
 $message = $rro->response('message');
 $foo = $rro->response('data', 'foo');
+$code = $rro->response('code');
+$add = $rro->response('add', ['bar' => 'foo']);
 ```
 
 ##  Methods
@@ -147,19 +150,23 @@ Wether the response is a success.
 ### Accessing response details
 ***	
 
-### `response('message')`
-
-Get the response message.
-
 ### `response('type')`
 
 Get the response type.
+
+### `response('message')`
+
+Get the response message.
 
 ### `response('data', $dot)`
 
 Get the response data array (uses dot syntax to retrieve specific key). 
 
 Example: `response('data', 'user.id')`
+
+### `response('code')`
+
+Get the response code.
 
 ### `response('add', array $data)`
 
