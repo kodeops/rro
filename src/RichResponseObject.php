@@ -206,6 +206,10 @@ class RichResponseObject
     public function response($method, $arguments = null)
     {
         switch ($method) {
+            case 'code':
+                return $this->getStatusCode();
+            break;
+
             case 'message':
                 return $this->getResponseMessage();
             break;
