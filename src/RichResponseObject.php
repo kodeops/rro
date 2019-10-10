@@ -3,6 +3,7 @@ namespace kodeops\rro;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use Exception;
 
 class RichResponseObject
 {
@@ -20,7 +21,13 @@ class RichResponseObject
     public $data;
     public $response;
 
-    public function __construct($isSuccess, $message, $type = null, $response_data = null, $status_code = null)
+    public function __construct(
+        $isSuccess, 
+        $message, 
+        $type = null, 
+        $response_data = null, 
+        $status_code = null
+    )
     {
         $this->isSuccess = $isSuccess;
         $this->setKey($isSuccess);
@@ -196,7 +203,39 @@ class RichResponseObject
         return response()->json($this->getResponse(), $this->getStatusCode());
     }
 
-    // ALIAS
+    public function response($method, $arguments = null)
+    {
+        switch ($method) {
+            case 'message':
+                return $this->getResponseMessage();
+            break;
+
+            case 'type':
+                return $this->getResponseType();
+            break;
+
+            case 'data':
+                return $this->getData($arguments);
+            break;
+
+            case 'add':
+                return $this->addData($arguments);
+            break;
+
+            case 'is_type':
+                return $this->isResponseType($arguments);
+            break;
+
+            case 'is_message':
+                return $this->isResponseMessage($arguments);
+            break;
+
+            default:
+                throw new Exception("Invalid method: " . $method);
+            break;
+        }
+    }
+
     public function __toString()
     {
         return json_encode($this->toResponse());

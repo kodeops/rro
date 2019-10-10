@@ -94,26 +94,7 @@ Set the data for the response.
 
 Set the status code for the response.
 
-### Accessing response
-***	
-
-### `getResponseMessage()`
-
-Get the response message.
-
-### `getResponseType()`
-
-Get the response type.
-
-### `getData($dot)`
-
-Get the response data array (uses dot syntax to retrieve specific key). 
-
-Example: `getData('user.id')`
-
-### `addData(array $data)`
-
-Add more items to the data array (will be automatically merged to existing data).
+### Check response status
 
 ### `isError()`
 
@@ -123,11 +104,32 @@ Wether the response is an error.
 
 Wether the response is a success.
 
-### `isResponseType('type')`
+### Accessing response details
+***	
+
+### `response('message')`
+
+Get the response message.
+
+### `response('type')`
+
+Get the response type.
+
+### `response('data', $dot)`
+
+Get the response data array (uses dot syntax to retrieve specific key). 
+
+Example: `response('data', user.id')`
+
+### `response('add', array $data)`
+
+Add more items to the data array (will be automatically merged to existing data).
+
+### `response('is_type', $type)`
 
 Wether the response type equals to the parameter sent.
 
-### `isResponseMessage('message')`
+### `response('is_message', $message)`
 
 Wether the response message equals to the parameter sent.
 
