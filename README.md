@@ -73,6 +73,45 @@ Add `helpers.php` to `composer.json` autoload section:
     "<your-app-folder>/helpers.php"
 ],
 ``` 
+
+## Usage 
+Assuming helper functions are loaded in `composer.json`:
+
+```
+$rro = error()
+		      ->type('error_type')
+		      ->message('This is a sample rich response object.')
+		      ->code(404)
+		      ->data(['foo' => 'bar']);
+```
+
+Checking status:
+
+```
+if ($rro->isError()) {
+	// Response contains an error payload
+}
+
+if ($rro->isSuccess()) {
+	// Response contains a success payload
+}
+
+if ($rro->response('is_type', 'error_type')) {
+	// returns true if given type matches response type
+}
+
+if ($rro->response('is_message', 'Descriptive error message')) {
+	// returns true if given message matches response message
+}
+```
+
+Accessing response:
+
+```
+$message = $rro->response('message');
+$foo = $rro->response('data', 'foo');
+```
+
 ##  Methods
 
 ### Building response
@@ -95,6 +134,7 @@ Set the data for the response.
 Set the status code for the response.
 
 ### Check response status
+***	
 
 ### `isError()`
 
@@ -119,7 +159,7 @@ Get the response type.
 
 Get the response data array (uses dot syntax to retrieve specific key). 
 
-Example: `response('data', user.id')`
+Example: `response('data', 'user.id')`
 
 ### `response('add', array $data)`
 
