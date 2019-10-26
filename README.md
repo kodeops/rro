@@ -33,6 +33,7 @@ Add `rro-helpers.php` to `composer.json` autoload section:
 ## Usage 
 Assuming helper functions are loaded in `composer.json`:
 
+```
 $rro = error()
   ->type('error_type')
   ->message('This is a sample rich response object.')
