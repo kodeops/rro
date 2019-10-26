@@ -14,70 +14,25 @@ Add composer package:
 
 `$ composer require kodeops/rro:dev-master`
 
-Add helpers:
+Copy function helpers to your project within your namespace (recommended, not mandatory):
+
+[https://raw.githubusercontent.com/kodeops/rro/master/src/helpers.php](https://raw.githubusercontent.com/kodeops/rro/master/src/helpers.php)
+
+Add `rro-helpers.php` to `composer.json` autoload section:
 
 ```
-use Illuminate\Support\Str;
-
-if (!function_exists('success')) {
-    function success($response_message = null) {
-        return (new \kodeops\rro\RichResponseObject(
-            true, 
-            $response_message, 
-            Str::slug($response_message, '_')
-        ))->build();
-    }
+"autoload": {
+    ...
+        
+   "files": [
+       "<your-app-folder>/rro-helpers.php"
+   ]
 }
-
-if (!function_exists('error')) {
-    function error($response_message = null) {
-        return (new \kodeops\rro\RichResponseObject(
-            false, 
-            $response_message, 
-            Str::slug($response_message, '_')
-        ))->build();
-    }
-}
-
-if (!function_exists('rro')) {
-    function rro($response) {
-        if (isset($response->response)) {
-            $isSuccess = true;
-            $message = $response->response->message;
-            $type = $response->response->type;
-            $data = isset($response->response->data) ? $response->response->data : null;
-            $status_code = isset($response->status_code) ? $response->status_code : 200;
-        } else {
-            $isSuccess = false;
-            $message = $response->error->message;
-            $type = $response->error->type;
-            $data = isset($response->error->data) ? $response->error->data : null;
-            $status_code = isset($response->status_code) ? $response->status_code : 400;
-        }
-        return (new \kodeops\rro\RichResponseObject(
-            $isSuccess, 
-            $message, 
-            $type, 
-            $data,
-            $status_code
-        ))->build();
-    }
-}
-
 ```
-
-Add `helpers.php` to `composer.json` autoload section:
-
-```
-"files": [
-    "<your-app-folder>/helpers.php"
-],
-``` 
 
 ## Usage 
 Assuming helper functions are loaded in `composer.json`:
 
-```
 $rro = error()
   ->type('error_type')
   ->message('This is a sample rich response object.')
