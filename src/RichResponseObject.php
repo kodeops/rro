@@ -137,7 +137,15 @@ class RichResponseObject
     public function getData($dot = false)
     {
         if ($dot) {
-            return Arr::get($this->getData(), $dot);
+            if (is_array($this->data)) {
+                return Arr::get($this->getData(), $dot);
+            }
+            
+            if (is_object($this->data)) {
+                if (isset($this->data->{$dot})) {
+                    return $this->data->{$dot};
+                }
+            }
         }
 
         return $this->data;
