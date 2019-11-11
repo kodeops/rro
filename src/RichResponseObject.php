@@ -138,12 +138,18 @@ class RichResponseObject
     {
         if ($dot) {
             if (is_array($this->data)) {
-                return Arr::get($this->getData(), $dot);
+                if (isset($this->data[$dot])) {
+                    return Arr::get($this->getData(), $dot);
+                } else {
+                    return;
+                }
             }
             
             if (is_object($this->data)) {
                 if (isset($this->data->{$dot})) {
                     return $this->data->{$dot};
+                } else {
+                    return;
                 }
             }
         }
