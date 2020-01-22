@@ -48,3 +48,8 @@ if (!function_exists('rro')) {
         ))->build();
     }
 }
+if (!function_exists('is_rro')) {
+    function is_rro($rro) {
+        return $rro instanceof \kodeops\rro\RichResponseObject;
+   }
+}   
