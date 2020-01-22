@@ -25,7 +25,7 @@ Add `rro-helpers.php` to `composer.json` autoload section:
     ...
         
    "files": [
-       "<your-app-folder>/rro-helpers.php"
+       "vendor/kodeops/rro/src/rro-helpers.php"
    ]
 }
 ```
