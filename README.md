@@ -136,9 +136,36 @@ Wether the response type equals to the parameter sent.
 
 Wether the response message equals to the parameter sent.
 
-### Render for Laravel response
+### Render response
 ***	
 
-### `toResponse()`
+### HTML raw code `toHtml()`
+
+Will output the message and type in HTML as follows:
+
+```
+<h1>{{ $message }}</h1>
+<h3><code>{{ $type }}</code></h1>
+```
+
+So this snippet:
+
+```
+return success()
+	->type('item_updated')
+	->message('Item successfully updated!')
+	->toHtml();
+```
+
+will produce:
+
+```
+<h1>Item successfully updated!</h1>
+<h3><code>item_update</code></h3>
+```
+
+If `type` is not set, `h3` tag will not be rendered.
+
+### for Laravel response `toResponse()`
 
 Render response in Laravel way.

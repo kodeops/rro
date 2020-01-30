@@ -213,6 +213,17 @@ class RichResponseObject
         return response()->json($this->getResponse(), $this->getStatusCode());
     }
 
+    public function toHtml()
+    {
+        $html = '<h1>' . $this->message . '</h1>';
+        
+        if (Str::slug($this->message, self::SLUG_DELIMITER) != $this->type) {
+            $html .= '<h3><code>' . $this->type . '</code></h3>';
+        }
+
+        return response($html);
+    }
+
     public function response($method, $arguments = null)
     {
         switch ($method) {
