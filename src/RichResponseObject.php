@@ -188,14 +188,31 @@ class RichResponseObject
         return $this;
     }
 
-    public function isSuccess()
+    public function isSuccess($property = null, $value = null)
     {
-        return $this->isSuccess;
+        if (is_null($property) OR is_null($value)) {
+            return $this->isSuccess;
+        }
+
+        return $this->responseProperty($property, $value);
     }
 
-    public function isError()
+    public function isError($property = null, $value = null)
     {
-        return !$this->isSuccess;
+        if (is_null($property) OR is_null($value)) {
+            return !$this->isSuccess;
+        }
+
+        return $this->responseProperty($property, $value);
+    }
+
+    private function responseProperty($property, $value)
+    {
+        if (! in_array($property, ['type', 'message'])) {
+            throw new rroException("Invalid property: {$property}");
+        }
+
+        return $this->{'isResponse' . ucwords($property)}($value);
     }
 
     public function isResponseType($type)

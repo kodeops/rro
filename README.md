@@ -51,7 +51,32 @@ if ($rro->isError()) {
 if ($rro->isSuccess()) {
   // Response contains a success payload
 }
+```
 
+Additionaly, `isError` and `isSuccess` accepts two parameters for checking `type` or `message` content:
+
+```
+if ($rro->isError('type', 'error_type')) {
+  // Response contains an error type equals to "error_type"
+}
+
+if ($rro->isError('message', 'Error message')) {
+  // Response contains an error message equals to "error_type"
+}
+
+if ($rro->isSuccess('type', 'success_type')) {
+  // Response contains a success type equals to "success_type"
+}
+
+if ($rro-> isSuccess('message', 'Success message')) {
+  // Response contains a message equals to "Success message"
+}
+```
+
+Or you can access independent whether it's an `error` or `response`:
+
+
+```
 if ($rro->response('is_type', 'error_type')) {
   // returns true if given type matches response type
 }
