@@ -3,7 +3,7 @@ namespace kodeops\rro;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
-use Exception;
+use rroException;
 
 class RichResponseObject
 {
@@ -256,7 +256,7 @@ class RichResponseObject
             break;
 
             default:
-                throw new Exception("Invalid method: " . $method);
+                throw new rroException("Invalid method: " . $method);
             break;
         }
     }
