@@ -191,6 +191,29 @@ will produce:
 
 If `type` is not set, `h3` tag will not be rendered.
 
-### for Laravel response `toResponse()`
+### Render to array `toArray()`
+
+Render response to a simple array (otherwise responds with an instance of rro class).
+
+So this snippet:
+
+```
+return success()
+  ->type('item_updated')
+  ->message('Item successfully updated!')
+  ->toArray();
+```
+
+will produce:
+
+```
+[
+  "response" => [
+    "type" => "item_updated",
+    "message" => "Item successfully updated!",
+  ]
+];
+```
+### For Laravel response `toResponse()`
 
 Render response in Laravel way.

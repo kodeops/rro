@@ -241,6 +241,11 @@ class RichResponseObject
         return response($html);
     }
 
+    public function toArray()
+    {
+        return $this->response;
+    }
+
     public function response($method, $arguments = null)
     {
         switch ($method) {
