@@ -117,6 +117,12 @@ Set the data for the response.
 
 Set the status code for the response.
 
+### `trans(string $translation)`
+
+Uses the translation to set the `type` and the translation itself is placed in the `message`.
+
+A valid translation path must be entered, if not it will throw an `rroException`.
+
 ### Check response status
 ***	
 
