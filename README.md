@@ -117,6 +117,12 @@ Set the data for the response.
 
 Set the status code for the response.
 
+### `trans(string $translation)`
+
+Uses the translation to set the `type` and the translation itself is placed in the `message`.
+
+A valid translation path must be entered, if not it will throw an `rroException`.
+
 ### Check response status
 ***	
 
@@ -191,6 +197,29 @@ will produce:
 
 If `type` is not set, `h3` tag will not be rendered.
 
-### for Laravel response `toResponse()`
+### Render to array `toArray()`
+
+Render response to a simple array (otherwise responds with an instance of rro class).
+
+So this snippet:
+
+```
+return success()
+  ->type('item_updated')
+  ->message('Item successfully updated!')
+  ->toArray();
+```
+
+will produce:
+
+```
+[
+  "response" => [
+    "type" => "item_updated",
+    "message" => "Item successfully updated!",
+  ]
+];
+```
+### For Laravel response `toResponse()`
 
 Render response in Laravel way.

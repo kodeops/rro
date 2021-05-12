@@ -3,7 +3,8 @@ namespace kodeops\rro;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
-use kodeops\rro\rroException;
+use Illuminate\Support\Facades\Lang;
+use rroException;
 
 class RichResponseObject
 {
@@ -241,6 +242,11 @@ class RichResponseObject
         return response($html);
     }
 
+    public function toArray()
+    {
+        return $this->response;
+    }
+
     public function response($method, $arguments = null)
     {
         switch ($method) {
@@ -276,6 +282,18 @@ class RichResponseObject
                 throw new rroException("Invalid method: " . $method);
             break;
         }
+    }
+
+    public function trans($translation)
+    {
+        if (! Lang::has($translation)) {
+            throw new rroException("Translation not found: “{$method}”");
+        }
+
+        $this->setResponseType($translation, false);
+        $this->setResponseMessage(Lang::get($translation));
+
+        return $this;
     }
 
     public function __toString()
