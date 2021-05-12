@@ -50,10 +50,14 @@ class RichResponseObject
         return $this->key;
     }
 
-    public function setResponseType($type)
+    public function setResponseType($type, $slugged = true)
     {
         $this->type = is_null($type) ? $this->getResponseMessage() : $type;
-        $this->type = Str::slug($this->type, self::SLUG_DELIMITER);
+        
+        if ($slugged) {
+            $this->type = Str::slug($this->type, self::SLUG_DELIMITER);    
+        }
+        
         $this->response[$this->getKey()]['type'] = $this->type;
 
         return $this;
@@ -65,10 +69,10 @@ class RichResponseObject
     }
 
     // ALIAS
-    public function type($type)
+    public function type($type, $slugged = true)
     {
         $this->type = $type;
-        return $this->setResponseType($this->type);
+        return $this->setResponseType($this->type, $slugged);
     }
 
     private function setResponseMessage($message)
@@ -114,6 +118,12 @@ class RichResponseObject
 
     // ALIAS
     public function statusCode($status_code)
+    {
+        return $this->setStatusCode($status_code);
+    }
+
+    // ALIAS
+    public function status($status_code)
     {
         return $this->setStatusCode($status_code);
     }
