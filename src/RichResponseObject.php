@@ -294,14 +294,14 @@ class RichResponseObject
         }
     }
 
-    public function trans($translation)
+    public function trans(string $key, array $replace = [], string $locale = null, bool $fallback = true)
     {
-        if (! Lang::has($translation)) {
+        if (! Lang::has($key)) {
             throw new rroException("Translation not found: “{$method}”");
         }
 
-        $this->setResponseType($translation, false);
-        $this->setResponseMessage(Lang::get($translation));
+        $this->setResponseType($key, false);
+        $this->setResponseMessage(Lang::get($key, $replace, $locale, $fallback));
 
         return $this;
     }
