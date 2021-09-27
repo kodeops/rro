@@ -28,20 +28,38 @@ if (! function_exists('error')) {
 
 if (! function_exists('rro')) {
     function rro($response) {
-        if (isset($response->response)) {
-            $isSuccess = true;
-            $message = $response->response->message;
-            $type = $response->response->type;
-            $data = isset($response->response->data) ? $response->response->data : null;
-            $status_code = isset($response->status_code) ? $response->status_code : 200;
-        } elseif (isset($response->error)) {
-            $isSuccess = false;
-            $message = $response->error->message;
-            $type = $response->error->type;
-            $data = isset($response->error->data) ? $response->error->data : null;
-            $status_code = isset($response->status_code) ? $response->status_code : 400;
+        if (is_array($response)) {
+            if (isset($response['response'])) {
+                $isSuccess = true;
+                $message = $response['response']['message'];
+                $type = $response['response']['type'];
+                $data = isset($response['response']['data']) ? $response['response']['data'] : null;
+                $status_code = isset($response['status_code']) ? $response['status_code'] : 200;
+            } elseif (isset($response['error'])) {
+                $isSuccess = false;
+                $message = $response['error']['message'];
+                $type = $response['error']['type'];
+                $data = isset($response['error']['data']) ? $response['error']['data'] : null;
+                $status_code = isset($response['status_code']) ? $response['status_code'] : 400;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            if (isset($response->response)) {
+                $isSuccess = true;
+                $message = $response->response->message;
+                $type = $response->response->type;
+                $data = isset($response->response->data) ? $response->response->data : null;
+                $status_code = isset($response->status_code) ? $response->status_code : 200;
+            } elseif (isset($response->error)) {
+                $isSuccess = false;
+                $message = $response->error->message;
+                $type = $response->error->type;
+                $data = isset($response->error->data) ? $response->error->data : null;
+                $status_code = isset($response->status_code) ? $response->status_code : 400;
+            } else {
+                return false;
+            }
         }
         
         return (new \kodeops\rro\RichResponseObject(
