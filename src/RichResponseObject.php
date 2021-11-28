@@ -4,7 +4,7 @@ namespace kodeops\rro;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Lang;
-use rroException;
+use kodeops\rro\rroException;
 
 class RichResponseObject
 {
@@ -297,7 +297,7 @@ class RichResponseObject
     public function trans(string $key, array $replace = [], string $locale = null, bool $fallback = true)
     {
         if (! Lang::has($key)) {
-            throw new rroException("Translation not found: “{$method}”");
+            throw new rroException("Translation not found: “{$key}”");
         }
 
         $this->setResponseType($key, false);
