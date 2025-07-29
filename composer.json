@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": "^7|^8",
-        "laravel/framework": "^8|^9|^10",
+        "laravel/framework": "^8|^9|^10|^11|^12",
         "laravel/helpers": "^1"
     },
     "autoload": {
